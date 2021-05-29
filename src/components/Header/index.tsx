@@ -2,7 +2,6 @@ import React from "react";
 import corebizLogo from "../../assets/logo-corebiz-preto-cinza.svg";
 import lupa from "../../assets/lupa.svg";
 import cart from "../../assets/cart.svg";
-
 import styles from "./styles.module.css";
 
 const Header: React.FC = () => {
