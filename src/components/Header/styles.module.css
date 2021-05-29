@@ -1,0 +1,31 @@
+.headerContainer {
+  background-color: white;
+  width: 100%;
+  display: flex;
+}
+.headerWrappper {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 80px;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+.headerIcon {
+}
+.headerSearchInput {
+    border-bottom: 1px solid #7A7A7A;
+    width: 100%;
+    max-width: 718px ;
+    display: flex;
+    align-items: center;
+}
+.headerSearchInput input {
+    border: none;
+    width: 100%;
+}
+.headerMyAccount {
+}
+.headerCart {
+}
