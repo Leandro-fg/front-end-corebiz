@@ -17,7 +17,7 @@ const Header: React.FC = () => {
           <img src={lupa} alt="Buscar" />
         </div>
         <div className={styles.headerMyAccount}>
-          <button>Minha Conta</button>
+          <a href='/login'>Minha Conta</a>
         </div>
         <div className={styles.headerCart}>
           <img src={cart} alt="Carrinho" />
