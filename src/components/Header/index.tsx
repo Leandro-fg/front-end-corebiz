@@ -2,23 +2,23 @@ import React from "react";
 import corebizLogo from "../../assets/logo-corebiz-preto-cinza.svg";
 import lupa from "../../assets/lupa.svg";
 import cart from "../../assets/cart.svg";
-import styles from "./styles.module.css";
+import "./styles.css";
 
 const Header: React.FC = () => {
   return (
-    <div className={styles.headerContainer}>
-      <div className={styles.headerWrappper}>
-        <div className={styles.headerIcon}>
+    <div className={"headerContainer"}>
+      <div className={"headerWrappper"}>
+        <div className={"headerIcon"}>
           <img src={corebizLogo} alt="corebizLogo" />
         </div>
-        <div className={styles.headerSearchInput}>
+        <div className={"headerSearchInput"}>
           <input type="text" placeholder="O que está procurando?" />
           <img src={lupa} alt="Buscar" />
         </div>
-        <div className={styles.headerMyAccount}>
-          <a href='/login'>Minha Conta</a>
+        <div className={"headerMyAccount"}>
+          <a href="/login">Minha Conta</a>
         </div>
-        <div className={styles.headerCart}>
+        <div className={"headerCart"}>
           <img src={cart} alt="Carrinho" />
         </div>
       </div>
