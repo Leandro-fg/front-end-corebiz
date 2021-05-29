@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import apiCorebiz from "../../services/apiCorebiz";
-import { Carousel } from "react-responsive-carousel";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 import { IproductList } from "./productList.interfaces";
 
@@ -8,7 +10,13 @@ import "./styles.css";
 
 const ProductList: React.FC = () => {
   const [product, setProducts] = useState<IproductList[]>();
-
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 4
+  };
   useEffect(() => {
     apiCorebiz
       .get("/products")
@@ -24,7 +32,7 @@ const ProductList: React.FC = () => {
   console.log("product fora", product);
   return (
     <>
-      <Carousel>
+      <Slider {...settings} >
         {product?.map(({ imageUrl, productName, price, listPrice }, index) => (
           <div key={index} className={"productListContainer"}>
             <div>
@@ -35,7 +43,7 @@ const ProductList: React.FC = () => {
             </div>
           </div>
         ))}
-      </Carousel>
+      </Slider>
     </>
   );
 };
