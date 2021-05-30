@@ -9,7 +9,9 @@ const Header: React.FC = () => {
     <div className={"headerContainer"}>
       <div className={"headerWrappper"}>
         <div className={"headerIcon"}>
-          <img src={corebizLogo} alt="corebizLogo" />
+          <a href="/">
+            <img src={corebizLogo} alt="corebizLogo" />
+          </a>
         </div>
         <div className={"headerSearchInput"}>
           <input type="text" placeholder="O que está procurando?" />

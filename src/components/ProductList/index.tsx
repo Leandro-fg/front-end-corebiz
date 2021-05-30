@@ -34,6 +34,9 @@ const ProductList: React.FC = () => {
   console.log("product fora", product);
   return (
     <>
+      <div className={"productListTitleContainer"}>
+        <h3>Mais Vendidos</h3>
+      </div>
       <Slider {...settings}>
         {product?.map(
           (
@@ -48,11 +51,12 @@ const ProductList: React.FC = () => {
                   {price < listPrice ? `de ${formatCurrency(listPrice/100)}` : null}
                 </span>
                 <span className={"productListPrice"}>por R$ {formatCurrency(price/100)}</span>
-                <span>
+                <span className={'productListInstallments'}>
                   {installments.length
                     ? `ou em ${installments[0].quantity}x de R$ ${formatCurrency(installments[0].value/100)}`
                     : null}
                 </span>
+                <button className={"productListAddToCart"}>Comprar</button>
               </div>
             </div>
           )
