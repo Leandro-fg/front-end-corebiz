@@ -11,11 +11,12 @@ import "./styles.css";
 const ProductList: React.FC = () => {
   const [product, setProducts] = useState<IproductList[]>();
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 4,
-    slidesToScroll: 4
+    slidesToScroll: 4,
+    arrows: true
   };
   useEffect(() => {
     apiCorebiz
@@ -35,11 +36,11 @@ const ProductList: React.FC = () => {
       <Slider {...settings} >
         {product?.map(({ imageUrl, productName, price, listPrice }, index) => (
           <div key={index} className={"productListContainer"}>
-            <div>
+            <div className={"productListWrapper"}>
               <img src={imageUrl} alt="" />
-              <span>{productName}</span>
-              <span>{price < listPrice ? listPrice : null}</span>
-              <span>{price}</span>
+              <span className={"productListName"} >{productName}</span>
+              <span className={"productListPriceList"} >{price < listPrice ? `de ${listPrice}` : null}</span>
+              <span className={"productListPrice"} >por R$ {price}</span>
             </div>
           </div>
         ))}
