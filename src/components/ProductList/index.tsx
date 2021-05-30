@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import apiCorebiz from "../../services/apiCorebiz";
 import Slider from "react-slick";
+import StarRatingComponent from "react-star-rating-component";
+
 import { formatCurrency } from "../../utils/formatCurrency";
 
 import { IproductList } from "./productList.interfaces";
@@ -40,23 +42,38 @@ const ProductList: React.FC = () => {
       <Slider {...settings}>
         {product?.map(
           (
-            { imageUrl, productName, price, listPrice, installments },
+            { imageUrl, productName, price, listPrice, installments, stars },
             index
           ) => (
             <div key={index} className={"productListContainer"}>
               <div className={"productListWrapper"}>
                 <img src={imageUrl} alt="product" />
-                <span className={"productListName"}>{productName}</span>
-                <span className={"productListPriceList"}>
-                  {price < listPrice ? `de ${formatCurrency(listPrice/100)}` : null}
-                </span>
-                <span className={"productListPrice"}>por R$ {formatCurrency(price/100)}</span>
-                <span className={'productListInstallments'}>
-                  {installments.length
-                    ? `ou em ${installments[0].quantity}x de R$ ${formatCurrency(installments[0].value/100)}`
-                    : null}
-                </span>
-                <button className={"productListAddToCart"}>Comprar</button>
+                <div className={"productListInfo"}>
+                  <span className={"productListName"}>{productName}</span>
+                  <StarRatingComponent
+                    name="Stars"
+                    starCount={5}
+                    value={stars}
+                    starColor="#F8475F"
+                    emptyStarColor="#c4c4c4"
+                  />
+                  <span className={"productListPriceList"}>
+                    {price < listPrice
+                      ? `de ${formatCurrency(listPrice / 100)}`
+                      : null}
+                  </span>
+                  <span className={"productListPrice"}>
+                    por R$ {formatCurrency(price / 100)}
+                  </span>
+                  <span className={"productListInstallments"}>
+                    {installments.length
+                      ? `ou em ${
+                          installments[0].quantity
+                        }x de R$ ${formatCurrency(installments[0].value / 100)}`
+                      : null}
+                  </span>
+                  <button className={"productListAddToCart"}>Comprar</button>
+                </div>
               </div>
             </div>
           )
