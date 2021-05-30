@@ -5,4 +5,8 @@ export interface IproductList {
   imageUrl: string;
   price: number;
   listPrice: number;
+  installments: {
+    quantity: number,
+    value: number,
+  }[]
 }
