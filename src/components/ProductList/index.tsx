@@ -63,13 +63,13 @@ const ProductList: React.FC = () => {
                       : null}
                   </span>
                   <span className={"productListPrice"}>
-                    por R$ {formatCurrency(price / 100)}
+                    por {formatCurrency(price / 100)}
                   </span>
                   <span className={"productListInstallments"}>
                     {installments.length
                       ? `ou em ${
                           installments[0].quantity
-                        }x de R$ ${formatCurrency(installments[0].value / 100)}`
+                        }x de ${formatCurrency(installments[0].value / 100)}`
                       : null}
                   </span>
                   <button className={"productListAddToCart"}>Comprar</button>

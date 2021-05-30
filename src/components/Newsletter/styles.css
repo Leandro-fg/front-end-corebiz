@@ -1,0 +1,28 @@
+.newsletterContainer {
+  background: #f2f2f2;
+  padding: 30px;
+}
+.newsletterTitleContainer {
+}
+.newsletterWrapper {
+  display: flex;
+  justify-content: space-between;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.newsletterWrapper input {
+  width: 236px;
+  height: 46px;
+  padding-left: 10px;
+  border: none;
+  border-radius: 5px;
+}
+.newsletterWrapper button {
+  background-color: #000;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  height: 48px;
+  cursor: pointer;
+}

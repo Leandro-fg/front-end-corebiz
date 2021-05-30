@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './components/Header'
 import HomeCarousel from './components/Carousel'
+import Newsletter from './components/Newsletter'
 import ProductList from './components/ProductList'
 
 import './App.css';
@@ -12,6 +13,7 @@ function App() {
         <Header/>
         <HomeCarousel/>
         <ProductList/>
+        <Newsletter/>
     </div>
   );
 }

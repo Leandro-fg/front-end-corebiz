@@ -12,6 +12,13 @@
   color: #000000;
 }
 .productListContainer {
+  cursor: pointer;
+}
+.productListContainer:hover .productListInfo {
+  background-color: #E6E8EA;
+}
+.productListContainer:hover button {
+  visibility: visible;
 }
 .productListWrapper {
   display: flex;
@@ -61,6 +68,7 @@
   font-family: "Nunito", "sans-serif";
 }
 .productListAddToCart {
+  visibility: hidden;
   font-family: "Nunito", "sans-serif";
   font-weight: bold;
   font-size: 12px;
@@ -72,6 +80,7 @@
   height: 32px;
   margin: 0 auto;
   margin-top: 10px;
+  cursor: pointer;
 }
 .productListInstallments {
   font-family: "Nunito", "sans-serif";
@@ -86,10 +95,4 @@
   align-items: center;
   justify-content: center;
   padding: 10px 0;
-}
-.productListInfo:hover {
-  background-color: #E6E8EA;
-}
-.productListInfo button {
-  cursor: pointer;;
 }
