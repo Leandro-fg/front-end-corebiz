@@ -14,12 +14,22 @@ const CartContext = createContext<ICartContext>({
 
 const CartProvider: React.FC<{}> = ({ children }) => {
   const [currentCart, setCurrentCart] = useState<any>([]);
-  const [cookies, setCookie] = useCookies([]);
+  const [cookies, setCookie] = useCookies(["cart"]);
 
+  console.log(
+    "🚀 ~ file: cartContext.tsx cookieProducts = co ~ line 18 ~ cookies",
+    cookies
+  );
+
+  let cookieProducts = [];
+
+  console.log("currentCart", currentCart);
   useEffect(() => {
-    console.log("currentCart", currentCart);
-    setCookie("cart", currentCart);
-  }, [currentCart, cookies, setCookie]);
+    if (Object.keys(cookies).length === 0) {
+      console.log("cookie criado");
+      setCookie("cart", currentCart);
+    }
+  });
 
   const addToCart = (item: any) => {
     const quantityValidation = currentCart.find(
@@ -33,16 +43,25 @@ const CartProvider: React.FC<{}> = ({ children }) => {
       setCurrentCart(
         currentCart.map((cartItem: any) =>
           cartItem.productId === item.productId
-            ? { ...quantityValidation, quantity: quantityValidation.quantity + 1 }
+            ? {
+                ...quantityValidation,
+                quantity: quantityValidation.quantity + 1,
+              }
             : cartItem
         )
       );
+  
+      cookieProducts = currentCart?.concat(cookies?.cart);
+      console.log("cookieProducts", cookieProducts)
+      setCookie('cart', cookieProducts)
     } else {
       setCurrentCart([...currentCart, { ...item, quantity: 1 }]);
+      cookieProducts = currentCart?.concat(cookies?.cart);
+      setCookie('cart', cookieProducts)
     }
+
     console.log("item", item);
   };
-
   return (
     <CartContext.Provider value={{ currentCart, setCurrentCart, addToCart }}>
       {children}

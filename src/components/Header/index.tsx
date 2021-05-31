@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useCookies } from "react-cookie";
 import Cart from "../Cart";
 import corebizLogo from "../../assets/logo-corebiz-preto-cinza.svg";
 import lupa from "../../assets/lupa.svg";
@@ -8,8 +9,11 @@ import corebizLogoMobile from "../../assets/corebizLogoMobile.svg";
 import "./styles.css";
 
 const Header: React.FC = () => {
+  const [get] = useCookies(["Cart"]);
   const [open, setOpen] = useState<boolean>(false);
 
+  const product = get;
+  
   return (
     <>
       <div className={"headerContainer"}>
@@ -28,6 +32,7 @@ const Header: React.FC = () => {
           </div>
           <div className={"headerCart"} onClick={() => setOpen(!open)}>
             <img src={cart} alt="Carrinho" />
+           {product?.cart ?  <span>{product?.cart.length}</span> : null }
           </div>
         </div>
         <Cart open={open} setOpen={setOpen} />

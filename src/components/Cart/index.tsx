@@ -5,7 +5,7 @@ import { useCookies } from "react-cookie";
 import { formatCurrency } from "../../utils/formatCurrency";
 
 const Cart: React.FC<ICart> = ({ open, setOpen }) => {
-  const [get] = useCookies(["Cart"]);
+  const [get] = useCookies(["cart"]);
 
   const product = get;
   console.log("product", product);
@@ -30,9 +30,7 @@ const Cart: React.FC<ICart> = ({ open, setOpen }) => {
                   </span>
                   <span className={"productListPriceList"}>
                     {product.price < product.listPrice
-                      ? `de ${formatCurrency(
-                        product.listPrice / 100
-                      )}`
+                      ? `de ${formatCurrency(product.listPrice / 100)}`
                       : null}
                   </span>
                   <span className={"productListPrice"}>
@@ -51,7 +49,7 @@ const Cart: React.FC<ICart> = ({ open, setOpen }) => {
                 </div>
               </div>
             </div>
-          ))}{" "}
+          ))}
         </div>
       ) : null}
     </>

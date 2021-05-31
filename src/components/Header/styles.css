@@ -48,6 +48,19 @@
 }
 .headerCart {
   cursor: pointer;
+  position: relative;
+}
+.headerCart span {
+  font-size: "Nunito", "sans-serif";
+  position: absolute;
+  background: #f8475f;
+  font-size: 10px;
+  color: #fff;
+  width: 14px;
+  height: 14px;
+  border-radius: 100%;
+  top: 5px;
+  left: 20px;
 }
 .headerContainerMobile {
   display: none;
