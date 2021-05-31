@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import HomeCarousel from "./components/Carousel";
 import Newsletter from "./components/Newsletter";
 import ProductList from "./components/ProductList";
+import Footer from "./components/Footer";
 import CartProvider from "./context/cartContext";
 
 import "./App.css";
@@ -16,6 +17,7 @@ function App() {
         <ProductList />
       </CartProvider>
       <Newsletter />
+      <Footer/>
     </div>
   );
 }

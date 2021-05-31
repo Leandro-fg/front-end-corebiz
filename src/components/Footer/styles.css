@@ -1,0 +1,84 @@
+.footerContainer {
+  display: flex;
+  width: 100%;
+  background-color: #000;
+  color: #fff;
+}
+.footerWrapper {
+  display: flex;
+  flex-flow: row wrap;
+  max-width: 70%;
+  margin: 0 auto;
+  padding: 20px;
+}
+.footerAdress {
+  display: flex;
+  flex-flow: row wrap;
+  width: 33%;
+}
+.footerAdress span {
+  width: 100%;
+  text-align: left;
+}
+.footerAdress span:first-child {
+  font-family: "Nunito", "sans-serif";
+  font-weight: bold;
+  font-size: 20px;
+  color: #fff;
+}
+.footerAdress span:first-child::after {
+  content: "";
+  display: flex;
+  width: 44px;
+  height: 5px;
+  background-color: #fff;
+  margin: 20px 0;
+}
+.footerContact {
+  display: flex;
+  width: 33%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.footerContact a {
+  font-family: "Nunito", "sans-serif";
+  font-weight: 600;
+  font-size: 12px;
+  width: 195px;
+  height: 38px;
+  margin: 15px 0;
+  background-color: #fff;
+  border-radius: 5px;
+  border: none;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  color: #000;
+}
+.footerContact a:first-child img {
+  margin-right: 10px;
+}
+.footerContact a:last-child img {
+  padding: 20px;
+  padding-right: 0;
+  margin-right: -14px;
+}
+.footerLogo {
+  width: 33%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.footerLogo a {
+  display: flex;
+  flex-direction: column;
+  font-family: "Nunito", "sans-serif";
+  font-size: 10px;
+  text-decoration: none;
+  align-items: flex-start;
+  color: #fff;
+  margin: 0 20px;
+}
