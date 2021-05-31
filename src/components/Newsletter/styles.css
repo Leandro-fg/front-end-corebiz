@@ -79,3 +79,14 @@
 .newsletterWrapper button:hover {
     background-color:#333333;
 }
+@media(max-width: 1024px) {
+  .newsletterWrapper {
+    flex-flow: row wrap;
+  }
+  .newsletterWrapper button,
+  .newsletterWrapper div {
+    width: 100%;
+    max-width: 280px;
+    margin: 5px auto;
+  }
+}

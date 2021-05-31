@@ -1,7 +1,7 @@
 .productListTitleContainer {
   width: 100%;
   display: flex;
-  max-width: 1300px;
+  max-width: 70%;
   margin: 0 auto;
 }
 .productListTitleContainer h3 {
@@ -33,7 +33,7 @@
   width: 100%;
 }
 .slick-slider {
-  max-width: 1300px;
+  max-width: 70%;
   margin: 0 auto;
   padding: 10px 0 60px 0;
 }
@@ -54,6 +54,12 @@
   font-weight: 600;
   font-size: 12px;
   font-family: "Nunito", "sans-serif";
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  height: 16px;
+  overflow: hidden;
 }
 .productListPriceList {
   font-size: 12px;
@@ -105,4 +111,13 @@
   position: absolute;
   top: 0;
   right: 0;
+}
+@media (max-width: 1024px) {
+  .productListAddToCart {
+    visibility: visible;
+  }
+  .productListTitleContainer,
+  .slick-slider {
+    max-width: 75%;
+  }
 }

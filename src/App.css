@@ -7,8 +7,11 @@
   pointer-events: none;
 }
 
-.App .carousel-root {
+.App .desktopCarousel {
   margin-top: 80px;
+}
+.App .MobileCarousel {
+  display: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -38,5 +41,15 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .App .MobileCarousel {
+    display: flex;
+    margin-top: 115px;
+  }
+  .App .desktopCarousel {
+    display: none;
   }
 }
