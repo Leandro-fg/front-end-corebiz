@@ -7,6 +7,7 @@ const Newsletter: React.FC = () => {
   const [email, setEmail] = useState(String);
   const [name, setName] = useState(String);
   const [error, setError] = useState(Boolean);
+  const [dispatched, setDispatched] = useState<boolean>(false);
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
@@ -33,47 +34,72 @@ const Newsletter: React.FC = () => {
         name,
       })
       .then(({ data, status }) => {
-        console.log("status", status);
-        console.log("newsletter", data);
-      });
+        if (status === 200) {
+          setDispatched(true);
+        }
+        console.log(data)
+      }).catch((error) => {
+          console.log(error)
+      })
   };
+
+  const newRegister = () => {
+    setDispatched(false)
+    setError(false)
+    setEmail('')
+    setName('')
+  }
 
   return (
     <div className="newsletterContainer">
-      <form action="" onSubmit={handleSubmit}>
-        <div className="newsletterTitleContainer">
-          <h4>Participe de nossas news com promoções e novidades!</h4>
+      {dispatched ? (
+        <div className="newsletterDispatchedWrapper">
+          <span className="newsletterDispatchedFirstTitle">
+            Seu e-mail foi cadastrado com sucesso!{" "}
+          </span>
+          <span className="newsletterDispatchedSecondTitle">
+            A partir de agora você receberá as novidade e ofertas exclusivas.
+          </span>
+          <button className="newsletterDispatchedButton" onClick={newRegister}>
+            Cadastrar novo e-mail
+          </button>
         </div>
-        <div className="newsletterWrapper">
-          <div>
-            <input
-              type="text"
-              name="name"
-              id="name"
-              placeholder="Digite seu nome"
-              onChange={(e) => setName(e.target.value)}
-              className={`${error ? "newsletterInputError" : null}`}
-            />
-            <span className="NewsletterErrorLabel">
-              {error ? "Preencha com seu nome completo" : null}
-            </span>
+      ) : (
+        <form action="" onSubmit={handleSubmit}>
+          <div className="newsletterTitleContainer">
+            <h4>Participe de nossas news com promoções e novidades!</h4>
           </div>
-          <div>
-            <input
-              type="text"
-              name="email"
-              id="email"
-              placeholder="Digite seu email"
-              onChange={(e) => setEmail(e.target.value)}
-              className={`${error ? "newsletterInputError" : null}`}
-            />
-            <span className="NewsletterErrorLabel">
-              {error ? "Preencha com um e-mail válido" : null}
-            </span>
+          <div className="newsletterWrapper">
+            <div>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Digite seu nome"
+                onChange={(e) => setName(e.target.value)}
+                className={`${error ? "newsletterInputError" : null}`}
+              />
+              <span className="NewsletterErrorLabel">
+                {error ? "Preencha com seu nome completo" : null}
+              </span>
+            </div>
+            <div>
+              <input
+                type="text"
+                name="email"
+                id="email"
+                placeholder="Digite seu email"
+                onChange={(e) => setEmail(e.target.value)}
+                className={`${error ? "newsletterInputError" : null}`}
+              />
+              <span className="NewsletterErrorLabel">
+                {error ? "Preencha com um e-mail válido" : null}
+              </span>
+            </div>
+            <button type="submit">Eu quero!</button>
           </div>
-          <button type="submit">Eu quero!</button>
-        </div>
-      </form>
+        </form>
+      )}
     </div>
   );
 };
