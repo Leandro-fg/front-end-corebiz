@@ -17,7 +17,6 @@ import "./styles.css";
 const ProductList: React.FC = () => {
   const [product, setProducts] = useState<IproductList[]>();
   const { addToCart } = useCartProvider();
-  console.log("🚀 ~ file: index.tsx ~ line 20 ~ addToCart", addToCart);
 
   const settings = {
     dots: false,
@@ -32,7 +31,6 @@ const ProductList: React.FC = () => {
     apiCorebiz
       .get("/products")
       .then(({ data }) => {
-        console.log(data);
         setProducts(data);
       })
       .catch((error) => {
@@ -40,7 +38,6 @@ const ProductList: React.FC = () => {
       });
   }, []);
 
-  console.log("product fora", product);
   return (
     <>
       <div className={"productListTitleContainer"}>

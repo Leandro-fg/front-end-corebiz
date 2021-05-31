@@ -17,20 +17,30 @@ const CartProvider: React.FC<{}> = ({ children }) => {
   const [cookies, setCookie] = useCookies([]);
 
   useEffect(() => {
-    console.log(
-      "🚀 ~ file: cartContext.tsx ~ line 27 ~ addToCart ~ currentCart",
-      currentCart
-    );
-    console.log("🚀 ~ file: cartContext.tsx ~ line 18 ~ cookies", cookies);
-  }, [currentCart, cookies]);
+    console.log("currentCart", currentCart);
+    setCookie("cart", currentCart);
+  }, [currentCart, cookies, setCookie]);
 
   const addToCart = (item: any) => {
-    setCurrentCart((currentCart: any) => [...currentCart, item]);
-    console.log(
-      "🚀 ~ file: cartContext.tsx ~ line 23 ~ addToCart ~ item",
-      item
+    const quantityValidation = currentCart.find(
+      (currentItem: any) => currentItem.productId === item.productId
     );
-    setCookie("Cart", currentCart);
+    console.log(
+      "🚀 ~ file: cartContext.tsx ~ line 35 ~ addToCart ~ quantityValidation",
+      quantityValidation
+    );
+    if (quantityValidation) {
+      setCurrentCart(
+        currentCart.map((cartItem: any) =>
+          cartItem.productId === item.productId
+            ? { ...quantityValidation, quantity: quantityValidation.quantity + 1 }
+            : cartItem
+        )
+      );
+    } else {
+      setCurrentCart([...currentCart, { ...item, quantity: 1 }]);
+    }
+    console.log("item", item);
   };
 
   return (
@@ -43,9 +53,7 @@ const CartProvider: React.FC<{}> = ({ children }) => {
 export function useCartProvider() {
   const context = useContext(CartContext);
   if (!context) {
-    throw new Error(
-      "Esse contexto não pode ser usado fora do CartContextProvider"
-    );
+    throw new Error("Esse contexto não pode ser usado fora do CartProvider");
   }
   return context;
 }

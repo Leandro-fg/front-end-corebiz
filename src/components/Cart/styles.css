@@ -1,0 +1,25 @@
+.cartContainer {
+  width: 100px;
+  position: fixed;
+  height: 100%;
+  right: 0;
+  top: 0;
+  min-width: 320px;
+  background-color: #fff;
+  padding: 20px;
+  overflow: auto;
+}
+.cartTitleWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.cartCloseButton,
+.cartTitle {
+  color: #000;
+  font-weight: bold;
+  font-size: 18px;
+  font-family: "Nunito", "sans-serif";
+}
+.cartCloseButton {
+  cursor: pointer;
+}
