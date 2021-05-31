@@ -9,13 +9,17 @@
   z-index: 999;
 }
 .headerWrappper {
-  display: flex;
+  display: grid;
   width: 100%;
   align-items: center;
   justify-content: space-between;
   margin: 0 auto;
   height: 80px;
   max-width: 70%;
+  grid-template-columns: 0.3fr 0.8fr 0.14fr 0.1fr;
+}
+.headerContainer .headerIcon {
+  text-align: initial;
 }
 .headerSearchInput {
   border-bottom: 1px solid #7a7a7a;
@@ -50,6 +54,14 @@
   cursor: pointer;
   position: relative;
 }
+.headerContainer .headerCart {
+  cursor: pointer;
+  position: relative;
+  text-align: initial;
+}
+.headerContainer .headerCart span {
+  text-align: center;
+}
 .headerCart span {
   font-size: "Nunito", "sans-serif";
   position: absolute;
@@ -60,7 +72,7 @@
   height: 14px;
   border-radius: 100%;
   top: 5px;
-  left: 20px;
+  left: 23px;
 }
 .headerContainerMobile {
   display: none;

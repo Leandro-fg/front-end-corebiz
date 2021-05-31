@@ -16,12 +16,6 @@ const CartProvider: React.FC<{}> = ({ children }) => {
   const [currentCart, setCurrentCart] = useState<any>([]);
   const [cookies, setCookie] = useCookies(["cart"]);
 
-  console.log(
-    "🚀 ~ file: cartContext.tsx cookieProducts = co ~ line 18 ~ cookies",
-    cookies
-  );
-
-  console.log("currentCart", currentCart);
   useEffect(() => {
     if (Object.keys(cookies).length === 0) {
       console.log("cookie criado");
@@ -32,10 +26,6 @@ const CartProvider: React.FC<{}> = ({ children }) => {
   const addToCart = (item: any) => {
     const quantityValidation = currentCart.find(
       (currentItem: any) => currentItem.productId === item.productId
-    );
-    console.log(
-      "🚀 ~ file: cartContext.tsx ~ line 35 ~ addToCart ~ quantityValidation",
-      quantityValidation
     );
     if (quantityValidation) {
       setCurrentCart(
@@ -53,8 +43,6 @@ const CartProvider: React.FC<{}> = ({ children }) => {
       setCurrentCart([...currentCart, { ...item, quantity: 1 }]);
       setCookie("cart", currentCart);
     }
-
-    console.log("item", item);
   };
   return (
     <CartContext.Provider value={{ currentCart, setCurrentCart, addToCart }}>
