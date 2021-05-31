@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-
+import { useCookies } from "react-cookie";
 interface ICartContext {
   currentCart: any;
   setCurrentCart: Function;
@@ -14,23 +14,25 @@ const CartContext = createContext<ICartContext>({
 
 const CartProvider: React.FC<{}> = ({ children }) => {
   const [currentCart, setCurrentCart] = useState<any>([]);
+  const [cookies, setCookie] = useCookies([]);
 
-  useEffect(()=> {
+  useEffect(() => {
     console.log(
       "🚀 ~ file: cartContext.tsx ~ line 27 ~ addToCart ~ currentCart",
       currentCart
     );
-  }, [currentCart])
-  
+    console.log("🚀 ~ file: cartContext.tsx ~ line 18 ~ cookies", cookies);
+  }, [currentCart, cookies]);
+
   const addToCart = (item: any) => {
     setCurrentCart((currentCart: any) => [...currentCart, item]);
     console.log(
       "🚀 ~ file: cartContext.tsx ~ line 23 ~ addToCart ~ item",
       item
     );
-   
+    setCookie("Cart", currentCart);
   };
-  
+
   return (
     <CartContext.Provider value={{ currentCart, setCurrentCart, addToCart }}>
       {children}
