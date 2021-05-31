@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import apiCorebiz from "../../services/apiCorebiz";
 import flag from "../../assets/flag.svg";
+import { useCartProvider } from "../../context/cartContext";
 
 import Slider from "react-slick";
 import StarRatingComponent from "react-star-rating-component";
@@ -15,6 +16,11 @@ import "./styles.css";
 
 const ProductList: React.FC = () => {
   const [product, setProducts] = useState<IproductList[]>();
+  const { addToCart, currentCart, setCurrentCart } = useCartProvider();
+  setCurrentCart("qwe");
+  console.log("🚀 ~ file: index.tsx ~ line 20 ~ addToCart", addToCart);
+  console.log("🚀 ~ file: index.tsx ~ line 20 ~ currentCart", currentCart);
+
   const settings = {
     dots: false,
     infinite: true,
@@ -78,7 +84,12 @@ const ProductList: React.FC = () => {
                         )}`
                       : null}
                   </span>
-                  <button className={"productListAddToCart"}>Comprar</button>
+                  <button
+                    className={"productListAddToCart"}
+                    onClick={() => addToCart(product[index])}
+                  >
+                    Comprar
+                  </button>
                 </div>
               </div>
             </div>
