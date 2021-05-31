@@ -21,6 +21,7 @@ const ProductList: React.FC = () => {
     slidesToScroll: 4,
     arrows: true,
   };
+  
   useEffect(() => {
     apiCorebiz
       .get("/products")

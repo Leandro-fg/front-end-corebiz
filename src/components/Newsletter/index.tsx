@@ -1,28 +1,79 @@
-import React from "react";
+import React, { useState } from "react";
+import apiCorebiz from "../../services/apiCorebiz";
 
 import "./styles.css";
 
 const Newsletter: React.FC = () => {
+  const [email, setEmail] = useState(String);
+  const [name, setName] = useState(String);
+  const [error, setError] = useState(Boolean);
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    if (nameValidation(name) && emailValidation(email)) {
+      sendInfo(name, email);
+    } else {
+      setError(true);
+    }
+  };
+
+  const emailValidation = (email: string) => {
+    const re =
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  };
+  const nameValidation = (name: string) => {
+    return name !== "";
+  };
+
+  const sendInfo = (name: string, email: string) => {
+    apiCorebiz
+      .post("/newsletter", {
+        email,
+        name,
+      })
+      .then(({ data, status }) => {
+        console.log("status", status);
+        console.log("newsletter", data);
+      });
+  };
+
   return (
     <div className="newsletterContainer">
-      <div className="newsletterTitleContainer">
-        <h4>Participe de nossas news com promoções e novidades!</h4>
-      </div>
-      <div className="newsletterWrapper">
-        <input
-          type="text"
-          name="name"
-          id="name"
-          placeholder="Digite seu nome"
-        />
-        <input
-          type="text"
-          name="email"
-          id="email"
-          placeholder="Digite seu email"
-        />
-        <button onClick={() => console.log("click!")}>Eu quero!</button>
-      </div>
+      <form action="" onSubmit={handleSubmit}>
+        <div className="newsletterTitleContainer">
+          <h4>Participe de nossas news com promoções e novidades!</h4>
+        </div>
+        <div className="newsletterWrapper">
+          <div>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Digite seu nome"
+              onChange={(e) => setName(e.target.value)}
+              className={`${error ? "newsletterInputError" : null}`}
+            />
+            <span className="NewsletterErrorLabel">
+              {error ? "Preencha com seu nome completo" : null}
+            </span>
+          </div>
+          <div>
+            <input
+              type="text"
+              name="email"
+              id="email"
+              placeholder="Digite seu email"
+              onChange={(e) => setEmail(e.target.value)}
+              className={`${error ? "newsletterInputError" : null}`}
+            />
+            <span className="NewsletterErrorLabel">
+              {error ? "Preencha com um e-mail válido" : null}
+            </span>
+          </div>
+          <button type="submit">Eu quero!</button>
+        </div>
+      </form>
     </div>
   );
 };

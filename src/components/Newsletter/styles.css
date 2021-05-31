@@ -7,16 +7,21 @@
 .newsletterWrapper {
   display: flex;
   justify-content: space-between;
-  max-width: 600px;
+  max-width: 675px;
   margin: 0 auto;
 }
-
-.newsletterWrapper input {
-  width: 236px;
+.newsletterWrapper > div {
+  width: 70%;
+  display: flex;
+  flex-flow: row wrap;
+}
+.newsletterWrapper > div > input {
+  width: 268px;
   height: 46px;
   padding-left: 10px;
   border: none;
   border-radius: 5px;
+  border: 1px solid #bdbdbd;
 }
 .newsletterWrapper button {
   background-color: #000;
@@ -25,4 +30,14 @@
   color: #fff;
   height: 48px;
   cursor: pointer;
+  width: 140px;
+}
+.NewsletterErrorLabel {
+  color: #d7182a;
+  font-size: 12px;
+  width: 100%;
+  text-align: start;
+}
+.newsletterInputError {
+  border: 1px solid #D7182A !important;
 }
