@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import apiCorebiz from "../../services/apiCorebiz";
+import flag from "../../assets/flag.svg";
+
 import Slider from "react-slick";
 import StarRatingComponent from "react-star-rating-component";
 
@@ -21,7 +23,7 @@ const ProductList: React.FC = () => {
     slidesToScroll: 4,
     arrows: true,
   };
-  
+
   useEffect(() => {
     apiCorebiz
       .get("/products")
@@ -49,6 +51,9 @@ const ProductList: React.FC = () => {
             <div key={index} className={"productListContainer"}>
               <div className={"productListWrapper"}>
                 <img src={imageUrl} alt="product" />
+                {price < listPrice ? (
+                  <img src={flag} alt="off" className="productListFlag" />
+                ) : null}
                 <div className={"productListInfo"}>
                   <span className={"productListName"}>{productName}</span>
                   <StarRatingComponent
@@ -68,9 +73,9 @@ const ProductList: React.FC = () => {
                   </span>
                   <span className={"productListInstallments"}>
                     {installments.length
-                      ? `ou em ${
-                          installments[0].quantity
-                        }x de ${formatCurrency(installments[0].value / 100)}`
+                      ? `ou em ${installments[0].quantity}x de ${formatCurrency(
+                          installments[0].value / 100
+                        )}`
                       : null}
                   </span>
                   <button className={"productListAddToCart"}>Comprar</button>

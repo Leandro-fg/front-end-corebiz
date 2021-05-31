@@ -15,7 +15,7 @@
   cursor: pointer;
 }
 .productListContainer:hover .productListInfo {
-  background-color: #E6E8EA;
+  background-color: #e6e8ea;
 }
 .productListContainer:hover button {
   visibility: visible;
@@ -96,4 +96,13 @@
   align-items: center;
   justify-content: center;
   padding: 10px 0;
+}
+.productListWrapper {
+  position: relative;
+}
+.productListFlag {
+  max-width: 81px;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
