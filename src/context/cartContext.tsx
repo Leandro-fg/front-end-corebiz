@@ -1,13 +1,9 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 
 interface ICartContext {
   currentCart: any;
   setCurrentCart: Function;
   addToCart: Function;
-}
-
-interface ICartItem {
-  productId: number;
 }
 
 const CartContext = createContext<ICartContext>({
@@ -17,14 +13,24 @@ const CartContext = createContext<ICartContext>({
 });
 
 const CartProvider: React.FC<{}> = ({ children }) => {
-  const [currentCart, setCurrentCart] = useState([]);
+  const [currentCart, setCurrentCart] = useState<any>([]);
 
+  useEffect(()=> {
+    console.log(
+      "🚀 ~ file: cartContext.tsx ~ line 27 ~ addToCart ~ currentCart",
+      currentCart
+    );
+  }, [currentCart])
+  
   const addToCart = (item: any) => {
-  console.log("🚀 ~ file: cartContext.tsx ~ line 23 ~ addToCart ~ item", item)
-    console.log("click");
-
+    setCurrentCart((currentCart: any) => [...currentCart, item]);
+    console.log(
+      "🚀 ~ file: cartContext.tsx ~ line 23 ~ addToCart ~ item",
+      item
+    );
+   
   };
-
+  
   return (
     <CartContext.Provider value={{ currentCart, setCurrentCart, addToCart }}>
       {children}

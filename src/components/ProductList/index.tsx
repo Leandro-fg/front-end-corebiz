@@ -16,10 +16,8 @@ import "./styles.css";
 
 const ProductList: React.FC = () => {
   const [product, setProducts] = useState<IproductList[]>();
-  const { addToCart, currentCart, setCurrentCart } = useCartProvider();
-  setCurrentCart("qwe");
+  const { addToCart } = useCartProvider();
   console.log("🚀 ~ file: index.tsx ~ line 20 ~ addToCart", addToCart);
-  console.log("🚀 ~ file: index.tsx ~ line 20 ~ currentCart", currentCart);
 
   const settings = {
     dots: false,
