@@ -21,8 +21,6 @@ const CartProvider: React.FC<{}> = ({ children }) => {
     cookies
   );
 
-  let cookieProducts = [];
-
   console.log("currentCart", currentCart);
   useEffect(() => {
     if (Object.keys(cookies).length === 0) {
@@ -50,14 +48,10 @@ const CartProvider: React.FC<{}> = ({ children }) => {
             : cartItem
         )
       );
-  
-      cookieProducts = currentCart?.concat(cookies?.cart);
-      console.log("cookieProducts", cookieProducts)
-      setCookie('cart', cookieProducts)
+      setCookie("cart", currentCart);
     } else {
       setCurrentCart([...currentCart, { ...item, quantity: 1 }]);
-      cookieProducts = currentCart?.concat(cookies?.cart);
-      setCookie('cart', cookieProducts)
+      setCookie("cart", currentCart);
     }
 
     console.log("item", item);

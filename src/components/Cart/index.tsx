@@ -8,7 +8,7 @@ const Cart: React.FC<ICart> = ({ open, setOpen }) => {
   const [get] = useCookies(["cart"]);
 
   const product = get;
-  console.log("product", product);
+  
   return (
     <>
       {open ? (
